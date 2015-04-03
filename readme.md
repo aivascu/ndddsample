@@ -9,6 +9,7 @@
 #Solutions
 
 There are two solutions:
+
 1. Web Cargo Tracking Application - _NDDDSample.sln_
 2. Register desktop Application - _RegisterApp.sln_ which simulates concept where are two different organizations, as it is in the Java version of the DDD sample
 3. _NDDDSample-full.sln_ doesn't have any business\domain meaning it is just full solution with all developed projects
