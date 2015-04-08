@@ -12,7 +12,7 @@ assembly_info:
 
 # restore NuGet packages before running MSBuild
 before_build:
-  - nuget restore
+  - nuget restore NDDDSample.sln
 
 # package Web Application project for Web Deploy
 build:
