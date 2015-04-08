@@ -1,3 +1,7 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/ktfflws608b503de?svg=true)](https://ci.appveyor.com/project/AndreiIvascu/ndddsample)
+
+#NDDDSample
+
 **NDDDSample** is the project which demonstrates a practical implementation of the building block patterns described in the Eric Evans book based on a real but simplified cargo domain (which is also used as example in [Eric Evans](http://domaindrivendesign.org/about/index.html#eric) [book](http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)).
 
 **NDDDSample** is the port of Domain-Driven Design Sample from Java to C#
