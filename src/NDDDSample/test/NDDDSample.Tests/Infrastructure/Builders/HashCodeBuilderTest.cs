@@ -39,7 +39,7 @@ namespace NDDDSample.Tests.Infrastructure.Builders
             {
                 new HashCodeBuilder(0, 0);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 return;
             }
@@ -54,7 +54,7 @@ namespace NDDDSample.Tests.Infrastructure.Builders
             {
                 new HashCodeBuilder(2, 2);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 return;
             }
@@ -88,7 +88,7 @@ namespace NDDDSample.Tests.Infrastructure.Builders
             {
                 HashCodeBuilder.ReflectionHashCode(0, 0, new TestSubObject(0, 0, 0), true);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 return;
             }
@@ -102,7 +102,7 @@ namespace NDDDSample.Tests.Infrastructure.Builders
             {
                 HashCodeBuilder.ReflectionHashCode(2, 2, new TestSubObject(0, 0, 0), true);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 return;
             }
@@ -116,7 +116,7 @@ namespace NDDDSample.Tests.Infrastructure.Builders
             {
                 HashCodeBuilder.ReflectionHashCode(0, 0, new TestObject(0), true);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 return;
             }
@@ -130,7 +130,7 @@ namespace NDDDSample.Tests.Infrastructure.Builders
             {
                 HashCodeBuilder.ReflectionHashCode(2, 2, new TestObject(0), true);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 return;
             }
@@ -144,7 +144,7 @@ namespace NDDDSample.Tests.Infrastructure.Builders
             {
                 HashCodeBuilder.ReflectionHashCode(13, 19, null, true);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 return;
             }

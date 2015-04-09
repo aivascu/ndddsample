@@ -97,7 +97,9 @@ namespace NDDDSample.Tests.Domain.Model.Handlings
                     );
                 Assert.Fail("Expected UnknownLocationException");
             }
-            catch (UnknownLocationException expected) {}
+            catch (UnknownLocationException)
+            {
+            }
         }
 
         [Test]
@@ -115,7 +117,9 @@ namespace NDDDSample.Tests.Domain.Model.Handlings
                     );
                 Assert.Fail("Expected UnknownVoyageException");
             }
-            catch (UnknownVoyageException expected) {}
+            catch (UnknownVoyageException)
+            {
+            }
         }
 
         [Test]
@@ -132,7 +136,9 @@ namespace NDDDSample.Tests.Domain.Model.Handlings
                     );
                 Assert.Fail("Expected UnknownCargoException");
             }
-            catch (UnknownCargoException expected) {}
+            catch (UnknownCargoException)
+            {
+            }
         }
 
         [TearDown]

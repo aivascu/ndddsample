@@ -239,7 +239,9 @@ namespace NDDDSample.Tests.Scenarios
                     HandlingType.LOAD);
                 Assert.Fail("Should not be able to register a handling event with invalid location and voyage");
             }
-            catch (CannotCreateHandlingEventException expected) {}
+            catch (CannotCreateHandlingEventException)
+            {
+            }
 
 
             // Cargo is now (incorrectly) unloaded in Tokyo

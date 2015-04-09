@@ -103,7 +103,7 @@
                 new Itinerary(new List<Leg>());
                 Assert.Fail("An empty itinerary is not OK");
             }
-            catch (Exception iae)
+            catch (Exception)
             {
                 //Expected
             }
@@ -114,7 +114,7 @@
                 new Itinerary(legs);
                 Assert.Fail("Null itinerary is not OK");
             }
-            catch (Exception iae)
+            catch (Exception)
             {
                 //Expected
             }

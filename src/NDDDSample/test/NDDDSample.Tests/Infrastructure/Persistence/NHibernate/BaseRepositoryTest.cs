@@ -19,7 +19,7 @@ namespace NDDDSample.Tests.Infrastructure.Persistence.NHibernate
         public virtual void SetUp()
         {
             MappingInfo from = MappingInfo.From(typeof (Cargo).Assembly, typeof (HibernateRepository<>).Assembly);
-            IntializeNHibernateAndIoC(PersistenceFramwork, RhinoContainerConfig, DatabaseEngine.SQLite, from);
+            InitializeNHibernateAndIoC(PersistenceFramwork, RhinoContainerConfig, DatabaseEngine.SQLite, from);
 
             CurrentContext.CreateUnitOfWork();
             LoadData();

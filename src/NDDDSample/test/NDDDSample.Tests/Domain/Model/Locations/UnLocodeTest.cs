@@ -68,9 +68,9 @@ namespace NDDDSample.Tests.Domain.Model.Locations
             {
                 new UnLocode(unlocode);
             }
-            catch (Exception expected)
+            catch (Exception )
             {
-                Assert.Fail("The combination [" + unlocode + "] is not a valid UnLocode");
+                Assert.Fail("The combination [{0}] is not a valid UnLocode", unlocode);
             }
         }
     }
