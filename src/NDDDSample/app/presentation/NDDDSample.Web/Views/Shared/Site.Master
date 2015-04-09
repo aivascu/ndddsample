@@ -29,7 +29,7 @@
         </div>
         <div id="main" class="clear" >
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            <div id="footer" style="vertical-align: bottom; margin-top: 0px; padding-top: 0px">
+            <div id="footer" style="vertical-align: bottom; margin-top: 0; padding-top: 0">
                 NDDDSample Application &copy; Copyright 2011
             </div>         
         </div>

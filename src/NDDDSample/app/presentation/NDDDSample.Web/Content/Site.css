@@ -93,7 +93,7 @@ page width. Or, you can specify an exact pixel width. */
 
 #header
 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     color: #000;
     padding: 0;
     height:40px;
@@ -118,7 +118,7 @@ page width. Or, you can specify an exact pixel width. */
     clear:both;
     display:block;
     margin-top:20px;
-    /margin-top:60px;
+    margin-top:60px;
     border-top:1px solid #5C87B2;
     _height: 1px; /* only IE6 applies CSS properties starting with an underscrore */
 }
@@ -126,7 +126,6 @@ page width. Or, you can specify an exact pixel width. */
 #footer
 {
     color: #999;
-
     text-align: center;
     line-height: normal;
     margin: 0;
@@ -267,6 +266,11 @@ ul#menu li.selected a
     color: #ff0000;
 }
 
-#TabArea                    { height:27px; width:99%; border-bottom:#cccccc solid 1px; margin-top:18px; padding-left:3px; text-decoration:none; }
-
-.PageTabOn                  {  }
+#TabArea {
+     height:27px;
+     width:99%;
+     border-bottom:#cccccc solid 1px;
+     margin-top:18px;
+     padding-left:3px;
+     text-decoration:none;
+}

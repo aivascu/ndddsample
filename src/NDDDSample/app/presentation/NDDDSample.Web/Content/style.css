@@ -84,9 +84,6 @@ img.floatLeft {
 
 
 /* Lists */
-ul li {
-}
-
 ol li {
   font-weight: bold;
   color: #668FA3;
@@ -165,12 +162,12 @@ input.button {
   background: #ccc;
   border-width: 1px;
   border-style: solid;
-  border-color: #888 #888 #8880 #888;
+  border-color: #888;
 }
 
 input.radio {
   background: none;
-  border: 0px;
+  border: 0;
 }
 
 table {

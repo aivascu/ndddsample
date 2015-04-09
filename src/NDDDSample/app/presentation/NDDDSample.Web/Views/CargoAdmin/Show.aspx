@@ -52,7 +52,7 @@
                 </em></p>    
         <%}%>
             
-      <table border="1">
+      <table style="border: 1px solid #000">
         <caption>Itinerary</caption>
         <thead>
           <tr>

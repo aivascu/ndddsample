@@ -1,12 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" 
-Inherits="System.Web.Mvc.ViewPage<IList<CargoRoutingDTO>>" %>
-
-<%@ Import Namespace="NDDDSample.Web.Controllers.CargoAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IList<CargoRoutingDTO>>" %>
 <%@ Import Namespace="NDDDSample.Interfaces.BookingRemoteService.Common.Dto" %>
 
 <asp:Content ID="cargoAdminList" ContentPlaceHolderID="MainContent" runat="server">
-    <div><%= Html.ActionLink("Register New Cargo", "RegistrationForm", "CargoAdmin")%></div>
-    <table border="1" width="600">        
+    <div>
+        <%= Html.ActionLink("Register New Cargo", "RegistrationForm", "CargoAdmin")%></div>
+    <table style="border: 1px solid #000; width: 600px">
         <thead>
             <tr>
                 <td>
@@ -25,10 +23,10 @@ Inherits="System.Web.Mvc.ViewPage<IList<CargoRoutingDTO>>" %>
         </thead>
         <tbody>
             <% foreach (var cargo in ViewData.Model)
-                 {%>
+               {%>
             <tr>
                 <td>
-                    <%=Html.ActionLink(cargo.TrackingId, "Show", "CargoAdmin", new { trackingId = cargo.TrackingId }, null)%>                    
+                    <%=Html.ActionLink(cargo.TrackingId, "Show", "CargoAdmin", new { trackingId = cargo.TrackingId }, null)%>
                 </td>
                 <td>
                     <%=cargo.Origin%>
@@ -41,7 +39,7 @@ Inherits="System.Web.Mvc.ViewPage<IList<CargoRoutingDTO>>" %>
                 </td>
             </tr>
             <%
-                 }%>
+               }%>
         </tbody>
     </table>
 </asp:Content>

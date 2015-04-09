@@ -3,14 +3,18 @@ html, body {
 }
 
 body {
-  font: Verdana, Arial, sans-serif;
+  font-family: Verdana, Arial, sans-serif;
   color: black;
   padding: 10px;
 }
 
 h1 {
-  font-weight: lighter;
-  font-variant: small-caps;
+    font-weight: lighter;
+    -webkit-font-variant: small-caps;
+    -moz-font-variant: small-caps;
+    -ms-font-variant: small-caps;
+    -o-font-variant: small-caps;
+    font-variant: small-caps;
 }
 
 ul#menu {
@@ -31,9 +35,6 @@ ul#menu a {
 
 ul#menu a:hover {
   text-decoration: underline;
-}
-
-table {
 }
 
 table td {
