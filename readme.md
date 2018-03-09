@@ -1,6 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ktfflws608b503de?svg=true)](https://ci.appveyor.com/project/AndreiIvascu/ndddsample)
 
-#NDDDSample
+# NDDD Sample
 
 **NDDDSample** is the project which demonstrates a practical implementation of the building block patterns described in the Eric Evans book based on a real but simplified cargo domain (which is also used as example in [Eric Evans](http://domaindrivendesign.org/about/index.html#eric) [book](http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)).
 
@@ -10,7 +10,7 @@
 - Web interface allowing to book and track cargos.
 - RegisterApp allowing to register handling events for cargos.
 
-#Solutions
+## Solutions
 
 There are two solutions:
 
@@ -20,7 +20,7 @@ There are two solutions:
 4. _NDDDSample-full-with-setup.sln_ similar as from p.3 but with a setup project
 5. _NDDDSample-Cloud-full.sln_ is cloud (Windws Azure) version of application
 
-#Building
+## Building
 
 **ASP.NET MVC 2.0** must be installed. In order to build the source, run the _build.bat_ file. (You'll find the built assemblies in subfolders of _/build_ directory.)
 
@@ -28,7 +28,7 @@ There are two solutions:
 
 **Windows Azure SDK** needs to be installed. You can find it under _tools\WindowsAzureSDK_
 
-#Running
+## Running
 
 In order to run application first build the source. See the building section.
 
@@ -47,14 +47,14 @@ In order to run application first build the source. See the building section.
 	1.	Execute _run_RegisterApp.bat_ to run RegisterApp. The following services are run automatically:
 		- _build\NDDDSample.Interfaces.HandlingService.Host\NDDDSample.Interfaces.HandlingService.Host.exe_ the application RegisterApp is started
 
-#More Details
+## More Details
 
-The last version of the project and details can be found on project's home page: ~~http://code.google.com/p/ndddsample/~~.
+The last (original) version of the project and details can be found on project's home page: https://code.google.com/archive/p/ndddsample/.
 
 **Note:** The SVN repository on Google Code will be discontinued shortly due to the termination of the Google Code project.
 The current repository represents the final state in which the original repository has been left in.
 
-#License
+## License
 
 - The **NDDDSample** is the property of Artur Trosin and the project's contributors.
 - The project is lincensed under the [MIT Licence](http://opensource.org/licenses/MIT).
