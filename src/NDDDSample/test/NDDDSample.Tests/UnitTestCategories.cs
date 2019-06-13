@@ -9,6 +9,7 @@
     {
         public const string Infrastructure = "Infrastructure Layer";
         public const string Integration = "Integration";
+        public const string Persistence = "Persistence";
         public const string Controllers = "Controller Layer";
         public const string Scenarios = "Scenarios";
         public const string DomainModel = "Domain Model Layer";

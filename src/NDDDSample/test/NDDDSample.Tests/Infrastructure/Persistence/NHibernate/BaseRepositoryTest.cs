@@ -12,7 +12,9 @@ namespace NDDDSample.Tests.Infrastructure.Persistence.NHibernate
 
     #endregion
 
-    [TestFixture, Category(UnitTestCategories.Infrastructure)]
+    [TestFixture,
+        Category(UnitTestCategories.Infrastructure),
+        Category(UnitTestCategories.Persistence)]
     public class BaseRepositoryTest : DatabaseTestFixtureBase
     {
         [SetUp]

@@ -23,3 +23,7 @@ test:
     assemblies:
         only:
             - '**\NDDDSample.tests.dll'
+
+    categories:
+        except:
+            - Persistence

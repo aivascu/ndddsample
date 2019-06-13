@@ -16,7 +16,9 @@
 
     #endregion
 
-    [TestFixture, Category(UnitTestCategories.Infrastructure)]
+    [TestFixture, 
+        Category(UnitTestCategories.Infrastructure),
+        Category(UnitTestCategories.Persistence)]
     public class CargoRepositoryTest : BaseRepositoryTest
     {
         private ICargoRepository cargoRepository;
