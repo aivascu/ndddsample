@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{6E741043-7965-4832-ADEA-2A584834E616}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{9B70223D-B545-4D88-A14A-F0CB585755C5}"
@@ -48,6 +50,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2DCBB6
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{C23D7C71-D923-4BB7-A673-EE09337AE4EB}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
+		build.bat = build.bat
+		NDDDSample.build = NDDDSample.build
+		readme.md = readme.md
+		run_NDDDSample.bat = run_NDDDSample.bat
+		run_RegisterApp.bat = run_RegisterApp.bat
+		setup_NDDDSample.bat = setup_NDDDSample.bat
 	EndProjectSection
 EndProject
 Global
@@ -137,8 +151,11 @@ Global
 		{C61C3E52-729B-4EE3-A57E-C3D72CAEF65D} = {258AD889-2D2E-4751-B739-7345FE523B32}
 		{053C0D25-1C3D-4F9F-9FBA-44762592C9D4} = {258AD889-2D2E-4751-B739-7345FE523B32}
 		{0F67C72B-FD83-4157-B8A3-055655B3AFE7} = {258AD889-2D2E-4751-B739-7345FE523B32}
-		{B3CD22B6-C615-4289-836C-0BF5D7F9D188} = {258AD889-2D2E-4751-B739-7345FE523B32}
 		{19EFF15A-883F-428D-B1FE-1EFC02897023} = {A821E548-F2CD-4F83-A652-65DB305AE952}
 		{CA4C3E92-0FBC-4305-BD7C-D546FEAAA5D7} = {A821E548-F2CD-4F83-A652-65DB305AE952}
+		{B3CD22B6-C615-4289-836C-0BF5D7F9D188} = {258AD889-2D2E-4751-B739-7345FE523B32}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1D5E30C-29F0-41F2-A9E2-E40EEBC2832E}
 	EndGlobalSection
 EndGlobal

@@ -19,4 +19,7 @@ build:
   project: NDDDSample.sln
   verbosity: normal
 
-test: off
+test:
+    assemblies:
+        only:
+            - '**\*.tests.dll'
