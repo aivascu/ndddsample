@@ -1,23 +1,20 @@
 ﻿namespace NDDDSample.Domain.Model.Voyages
 {
-    #region Usings
-
+    using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
     using Infrastructure.Builders;
     using Infrastructure.Validations;
     using Shared;
 
-    #endregion
-
     /// <summary>
     /// A voyage schedule.
     /// </summary>
-    public class Schedule : IValueObject<Schedule>
+    public class Schedule : IValueObject<Schedule>, IEquatable<Schedule>
     {
         public static readonly Schedule EMPTY = new Schedule();
         private readonly IList<CarrierMovement> carrierMovements = new List<CarrierMovement>();
-
-        #region Constr
 
         internal Schedule(IList<CarrierMovement> carrierMovements)
         {
@@ -25,7 +22,7 @@
             Validate.NoNullElements(carrierMovements);
             Validate.NotEmpty(carrierMovements);
 
-            this.carrierMovements = new List<CarrierMovement>(carrierMovements);
+            this.carrierMovements = carrierMovements;
         }
 
         protected Schedule()
@@ -33,42 +30,50 @@
             // Needed by Hibernate
         }
 
-        #endregion
-
         /// <summary>
         /// Carrier movements.
         /// </summary>
         public IList<CarrierMovement> CarrierMovements
         {
-            get { return new List<CarrierMovement>(carrierMovements).AsReadOnly(); }
+            get { return new ReadOnlyCollection<CarrierMovement>(carrierMovements); }
         }
 
-        #region Object's override
-
-        public override bool Equals(object o)
+        public override bool Equals(object other)
         {
-            if (this == o)
+            if (this == other)
             {
                 return true;
             }
-            if (o == null || GetType() != o.GetType())
+
+            if (other == null || GetType() != other.GetType())
             {
                 return false;
             }
 
-            var that = (Schedule) o;
+            var that = (Schedule)other;
 
             return SameValueAs(that);
+        }
+
+        public bool Equals(Schedule other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            if (other == this)
+            {
+                return true;
+            }
+
+            return SameValueAs(other);
         }
 
         public override int GetHashCode()
         {
             return new HashCodeBuilder().Append(carrierMovements).ToHashCode();
         }
-
-        #endregion
-
-        #region IValueObject<Schedule> Members
 
         /// <summary>
         /// Value objects compare by the values of their attributes, they don't have an identity.
@@ -77,9 +82,12 @@
         /// <returns>true if the given value object's and this value object's attributes are the same.</returns>
         public bool SameValueAs(Schedule other)
         {
-            return other != null && carrierMovements.Equals(other.carrierMovements);
-        }
+            if (other == null)
+            {
+                return false;
+            }
 
-        #endregion
+            return carrierMovements.SequenceEqual(other.carrierMovements);
+        }
     }
 }

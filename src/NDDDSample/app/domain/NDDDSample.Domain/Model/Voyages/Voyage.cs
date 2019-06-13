@@ -1,14 +1,10 @@
 ﻿namespace NDDDSample.Domain.Model.Voyages
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using Infrastructure.Validations;
     using Locations;
     using Shared;
-
-    #endregion
 
     /// <summary>
     /// A Voyage - journey to some distant place,
@@ -18,15 +14,80 @@
     {
         // Null object pattern
         public static readonly Voyage NONE = new Voyage(new VoyageNumber(""), Schedule.EMPTY);
+
         private readonly Schedule schedule;
         private readonly VoyageNumber voyageNumber;
         private int id;
 
-        #region Nested Voyage Builder 
+        public Voyage(VoyageNumber voyageNumber, Schedule schedule)
+        {
+            Validate.NotNull(voyageNumber, "Voyage number is required");
+            Validate.NotNull(schedule, "Schedule is required");
+
+            this.voyageNumber = voyageNumber;
+            this.schedule = schedule;
+        }
+
+        protected Voyage()
+        {
+            // Needed by Hibernate
+        }
+
+        /// <summary>
+        /// GetSchedule
+        /// </summary>
+        /// <returns></returns>
+        public virtual Schedule Schedule
+        {
+            get { return schedule; }
+        }
+
+        /// <summary>
+        /// Voyage number.
+        /// </summary>
+        public virtual VoyageNumber VoyageNumber
+        {
+            get { return voyageNumber; }
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (this == obj)
+            {
+                return true;
+            }
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Voyage))
+            {
+                return false;
+            }
+
+            var that = (Voyage)obj;
+
+            return SameIdentityAs(that);
+        }
+
+        public override int GetHashCode()
+        {
+            return voyageNumber.GetHashCode();
+        }
+
+        public virtual bool SameIdentityAs(Voyage other)
+        {
+            return other != null && VoyageNumber.SameValueAs(other.VoyageNumber);
+        }
+
+        public override String ToString()
+        {
+            return "Voyage " + voyageNumber;
+        }
 
         /// <summary>
         ///  Builder pattern is used for incremental construction
-        ///  of a Voyage aggregate. This serves as an aggregate factory.        
+        ///  of a Voyage aggregate. This serves as an aggregate factory.
         /// </summary>
         public class Builder
         {
@@ -56,90 +117,5 @@
                 return new Voyage(voyageNumber, new Schedule(carrierMovements));
             }
         }
-
-        #endregion
-
-        #region Constr
-
-        public Voyage(VoyageNumber voyageNumber, Schedule schedule)
-        {
-            Validate.NotNull(voyageNumber, "Voyage number is required");
-            Validate.NotNull(schedule, "Schedule is required");
-
-            this.voyageNumber = voyageNumber;
-            this.schedule = schedule;
-        }
-
-        protected Voyage()
-        {
-            // Needed by Hibernate
-        }
-
-        #endregion
-
-        #region IEntity<Voyage> Members
-
-        public virtual bool SameIdentityAs(Voyage other)
-        {
-            return other != null && VoyageNumber.SameValueAs(other.VoyageNumber);
-        }
-
-        #endregion
-
-        #region Public Props
-
-        /// <summary>
-        /// Voyage number.
-        /// </summary>
-        public virtual VoyageNumber VoyageNumber
-        {
-            get { return voyageNumber; }
-        }
-
-        /// <summary>
-        /// GetSchedule
-        /// </summary>
-        /// <returns></returns>
-        public virtual Schedule Schedule
-        {
-            get { return schedule; }
-        }
-
-        #endregion
-
-        #region Object's override
-
-        public override int GetHashCode()
-        {
-            return voyageNumber.GetHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (this == obj)
-            {
-                return true;
-            }
-            if (obj == null)
-            {
-                return false;
-            }
-            if (!(obj is Voyage))
-            {
-                return false;
-            }
-
-            var that = (Voyage) obj;
-
-            return SameIdentityAs(that);
-        }
-
-
-        public override String ToString()
-        {
-            return "Voyage " + voyageNumber;
-        }
-
-        #endregion
     }
 }
