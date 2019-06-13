@@ -191,7 +191,6 @@
             Assert.IsTrue(cargo.Delivery.IsUnloadedAtDestination);
         }
 
-        [Test]
         // TODO: Generate test data some better way
         private Cargo PopulateCargoReceivedStockholm()
         {
@@ -207,7 +206,6 @@
             return cargo;
         }
 
-        [Test]
         private Cargo PopulateCargoClaimedMelbourne()
         {
             Cargo cargo = PopulateCargoOffMelbourne();
@@ -219,7 +217,6 @@
             return cargo;
         }
 
-        [Test]
         private Cargo PopulateCargoOffHongKong()
         {
             Cargo cargo = new Cargo(new TrackingId("XYZ"),
@@ -241,7 +238,6 @@
             return cargo;
         }
 
-        [Test]
         private Cargo PopulateCargoOnHamburg()
         {
             Cargo cargo = new Cargo(new TrackingId("XYZ"),
@@ -259,7 +255,6 @@
             return cargo;
         }
 
-        [Test]
         private Cargo PopulateCargoOffMelbourne()
         {
             Cargo cargo = new Cargo(new TrackingId("XYZ"),

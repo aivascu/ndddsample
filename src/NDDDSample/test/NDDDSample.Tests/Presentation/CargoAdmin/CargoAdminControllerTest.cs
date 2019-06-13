@@ -4,6 +4,7 @@ namespace NDDDSample.Tests.Presentation.CargoAdmin
 
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Web.Routing;
     using Interfaces.BookingRemoteService.Common;
     using Interfaces.BookingRemoteService.Common.Dto;
@@ -53,17 +54,18 @@ namespace NDDDSample.Tests.Presentation.CargoAdmin
             var arrivalDeadline = new DateTime(2000, 2, 2);
             string trackId = "trackId";
             var bookingServiceFacadeMock = new Mock<IBookingServiceFacade>();
-            bookingServiceFacadeMock.Setup(b => b.BookNewCargo(origin, destination, arrivalDeadline))
+            bookingServiceFacadeMock
+                .Setup(b => b.BookNewCargo(origin, destination, arrivalDeadline))
                 .Returns(trackId).Verifiable();
 
             var controller = new Mock<CargoAdminController>(bookingServiceFacadeMock.Object);
+            //Act
+            controller.Object.Register(new RegistrationCommand(
+                origin,
+                destination,
+                arrivalDeadline.ToString(CargoAdminController.RegisterDateFormat, CultureInfo.InvariantCulture)));
 
-            //Act           
-            controller.Object.Register(new RegistrationCommand(origin, destination,
-                                                               arrivalDeadline.ToString(
-                                                                   CargoAdminController.RegisterDateFormat)));
-
-            //Assert            
+            //Assert
             controller.Verify(
                 m =>
                 m.RedirectToAction(It.Is<string>(s => s == CargoAdminController.ShowActionName),
