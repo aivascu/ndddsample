@@ -22,4 +22,4 @@ build:
 test:
     assemblies:
         only:
-            - '**\*.tests.dll'
+            - '**\NDDDSample.tests.dll'
