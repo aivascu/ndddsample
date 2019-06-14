@@ -1,49 +1,96 @@
 namespace NDDDSample.Tests.Domain.Model.Voyages
 {
-    #region Usings
-    
+    using NDDDSample.Domain.Model.Voyages;
     using NUnit.Framework;
 
-    #endregion
-
     [TestFixture, Category(UnitTestCategories.DomainModel)]
-    [Ignore("Implement tests for this class")]
     public class VoyageNumberTest
     {
         [Test]
-        public void TestEquals()
+        public void Equals_ForSameReference_ReturnsTrue()
         {
-            //TODO: Test goes here...
+            var sut = new VoyageNumber("9aA9iDDU2");
+
+            var actual = sut.Equals(sut);
+
+            Assert.IsTrue(actual);
+        }
+
+        [Test]
+        public void Equals_ForSameValue_ReturnsTrue()
+        {
+            var sut1 = new VoyageNumber("9aA9iDDU2");
+            var sut2 = new VoyageNumber("9aA9iDDU2");
+
+            var actual = sut1.Equals(sut2);
+
+            Assert.IsTrue(actual);
+        }
+
+        [Test]
+        public void Equals_ForDifferentValue_ReturnsFalse()
+        {
+            var sut1 = new VoyageNumber("9aA9iDDU2");
+            var sut2 = new VoyageNumber("U982aJnNd");
+
+            var actual = sut1.Equals(sut2);
+
+            Assert.IsFalse(actual);
         }
 
         [Test]
         public void TestHashCode()
         {
-            //TODO: Test goes here...
+            var sut = new VoyageNumber("aaa");
+
+            var actual = sut.GetHashCode();
+
+            Assert.AreEqual(-625742108, actual);
         }
 
         [Test]
-        public void TestSameValueAs()
+        public void SameValueAs_ForSameValue_ReturnsTrue()
         {
-            //TODO: Test goes here...
+            var sut1 = new VoyageNumber("9aA9iDDU2");
+            var sut2 = new VoyageNumber("9aA9iDDU2");
+
+            var actual = sut1.SameValueAs(sut2);
+
+            Assert.IsTrue(actual);
         }
 
         [Test]
-        public void TestCopy()
+        public void SameValueAs_ForDifferentValue_ReturnsTrue()
         {
-            //TODO: Test goes here...
+            var sut1 = new VoyageNumber("9aA9iDDU2");
+            var sut2 = new VoyageNumber("U982aJnNd");
+
+            var actual = sut1.SameValueAs(sut2);
+
+            Assert.IsFalse(actual);
         }
 
         [Test]
-        public void TestToString()
+        public void ToString_ContainsTheValue()
         {
-            //TODO: Test goes here...
+            const string number = "9aA9iDDU2";
+            var sut = new VoyageNumber(number);
+
+            var actual = sut.ToString();
+
+            Assert.IsTrue(actual.Contains(number));
         }
 
         [Test]
         public void TestIdString()
         {
-            //TODO: Test goes here...
+            const string number = "9aA9iDDU2";
+
+            var sut = new VoyageNumber(number);
+
+            var actual = sut.IdString;
+
+            Assert.AreEqual(number, actual);
         }
     }
 }

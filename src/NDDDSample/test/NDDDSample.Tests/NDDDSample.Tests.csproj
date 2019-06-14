@@ -115,6 +115,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Model\Voyages\VoyageBuilder.cs" />
     <Compile Include="Infrastructure\Builders\BitConverterUtilTest.cs" />
     <Compile Include="Infrastructure\Builders\EqualsBuilderTest.cs" />
     <Compile Include="Infrastructure\Builders\HashCodeBuilderTest.cs" />

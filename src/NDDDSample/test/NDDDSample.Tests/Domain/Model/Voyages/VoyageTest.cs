@@ -1,61 +1,151 @@
 namespace NDDDSample.Tests.Domain.Model.Voyages
 {
-    #region Usings
-    
+    using System.Linq;
+    using Moq;
+    using NDDDSample.Domain.Model.Locations;
+    using NDDDSample.Domain.Model.Voyages;
     using NUnit.Framework;
 
-    #endregion
-
     [TestFixture, Category(UnitTestCategories.DomainModel)]
-    [Ignore("Implement tests for this class")]
     public class VoyageTest
     {
         [Test]
-        public void TestVoyageNumber()
+        public void VoyageNumber_UsesVoyageNumber()
         {
-            //TODO: Test goes here...
+            VoyageNumber voyageNumber = null;
+            var sut = new VoyageBuilder()
+                .With((Mock<VoyageNumber> m) =>
+                {
+                    m.CallBase = true;
+                    voyageNumber = m.Object;
+                })
+                .Build();
+
+            Assert.AreEqual(voyageNumber, sut.VoyageNumber);
         }
 
         [Test]
-        public void TestSchedule()
+        public void Schedule_UsesProvidedSchedule()
         {
-            //TODO: Test goes here...
+            Schedule schedule = null;
+            var sut = new VoyageBuilder()
+                .With((Mock<Schedule> m) =>
+                {
+                    m.CallBase = true;
+                    schedule = m.Object;
+                })
+                .Build();
+
+            Assert.AreEqual(schedule, sut.Schedule);
         }
 
         [Test]
-        public void TestHashCode()
+        public void GetHashCode_ReturnsVoyageNumberHashCode()
         {
-            //TODO: Test goes here...
+            var sut = new VoyageBuilder()
+                .With((Mock<VoyageNumber> m) =>
+                    m.Setup(vn => vn.GetHashCode()).Returns(5))
+                .Build();
+
+            var actual = sut.GetHashCode();
+
+            Assert.AreEqual(5, actual);
         }
 
         [Test]
-        public void TestEquals()
+        public void Equals_SameReference_ReturnsTrue()
         {
-            //TODO: Test goes here...
+            var sut = new VoyageBuilder()
+                .Build();
+
+            var actual = sut.Equals(sut);
+
+            Assert.IsTrue(actual);
         }
 
         [Test]
-        public void TestSameIdentityAs()
+        public void Equals_SameReferenceVoyageNumber_ReturnsTrue()
         {
-            //TODO: Test goes here...
+            var voyageNumber = new Mock<VoyageNumber>("aS2e32B");
+            var sut1 = new VoyageBuilder()
+                .Using(voyageNumber)
+                .Build();
+            var sut2 = new VoyageBuilder()
+                .Using(voyageNumber)
+                .Build();
+
+            var actual = sut1.Equals(sut2);
+
+            Assert.IsTrue(actual);
         }
 
         [Test]
-        public void TestToString()
+        public void Equals_SameValueVoyageNumber_ReturnsTrue()
         {
-            //TODO: Test goes here...
+            const string voyageNumber = "aO2s34N";
+            var sut1 = new VoyageBuilder()
+                .Using(new Mock<VoyageNumber>(voyageNumber))
+                .Build();
+            var sut2 = new VoyageBuilder()
+                .Using(new Mock<VoyageNumber>(voyageNumber))
+                .Build();
+
+            var actual = sut1.Equals(sut2);
+
+            Assert.IsTrue(actual);
         }
 
         [Test]
-        public void TestAddMovement()
+        public void SameIdentityAs_ChecksVoyageNumber()
         {
-            //TODO: Test goes here...
+            const string voyageNumber = "aO2s34N";
+            var sut1 = new VoyageBuilder()
+                .Using(new Mock<VoyageNumber>(voyageNumber))
+                .Build();
+            var sut2 = new VoyageBuilder()
+                .Using(new Mock<VoyageNumber>(voyageNumber))
+                .Build();
+
+            var actual = sut1.SameIdentityAs(sut2);
+
+            Assert.IsTrue(actual);
         }
 
         [Test]
-        public void TestBuild()
+        public void ToString_ReturnsValueContainingVoyageNumber()
         {
-            //TODO: Test goes here...
+            var sut = new VoyageBuilder()
+                .Using(new Mock<VoyageNumber>("a2sJ5KA312") { CallBase = true })
+                .Build();
+
+            var actual = sut.ToString();
+
+            Assert.AreEqual("Voyage a2sJ5KA312", actual);
+        }
+
+        [Test]
+        public void AddMovement_AddsLocationToSchedule()
+        {
+            var targetLocation = new Mock<Location>();
+            targetLocation.Setup(tl => tl.SameIdentityAs(targetLocation.Object)).Returns(true);
+            var sut = new Voyage.Builder(new VoyageNumber("eY72I01w"), Location.UNKNOWN)
+                .AddMovement(targetLocation.Object, default, default)
+                .Build();
+
+            Assert.IsTrue(sut.Schedule.CarrierMovements.Any(cm => cm.ArrivalLocation.SameIdentityAs(targetLocation.Object)));
+        }
+
+        [Test]
+        public void Build_BuildsAVaildVoyage()
+        {
+            var voyageNumber = new Mock<VoyageNumber>(string.Empty) { CallBase = true };
+            voyageNumber.Setup(vn => vn.Equals(voyageNumber.Object)).Returns(true);
+
+            var sut = new Voyage.Builder(voyageNumber.Object, Location.UNKNOWN)
+                .AddMovement(new Mock<Location>().Object, default, default)
+                .Build();
+
+            Assert.AreEqual(voyageNumber.Object, sut.VoyageNumber);
         }
     }
 }

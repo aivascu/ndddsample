@@ -9,7 +9,7 @@ namespace NDDDSample.Tests.Domain.Model.Voyages
     public class ScheduleTest
     {
         [Test]
-        public void TestCarrierMovements()
+        public void CarrierMovements_ContainsMovementFromCtor()
         {
             var movementMock = new Mock<CarrierMovement>();
             var sut = new Schedule(new List<CarrierMovement> { movementMock.Object });
@@ -18,7 +18,7 @@ namespace NDDDSample.Tests.Domain.Model.Voyages
         }
 
         [Test]
-        public void TestSameValueAs()
+        public void SameValueAs_ForSameValue_ReturnsTrue()
         {
             var movementMock = new Mock<CarrierMovement> { CallBase = true };
             var movements = new List<CarrierMovement> { movementMock.Object };
@@ -31,7 +31,7 @@ namespace NDDDSample.Tests.Domain.Model.Voyages
         }
 
         [Test]
-        public void TestEquals()
+        public void Equals_ForSameReference_ReturnsTrue()
         {
             var movementMock = new Mock<CarrierMovement>();
 
@@ -39,11 +39,11 @@ namespace NDDDSample.Tests.Domain.Model.Voyages
 
             var actual = sut.Equals(sut);
 
-            Assert.AreEqual(true, actual);
+            Assert.IsTrue(actual);
         }
 
         [Test]
-        public void TestHashCode()
+        public void GetHashCode_ForSameValue_ReturnsSameHashCode()
         {
             var movementMock = new Mock<CarrierMovement>();
             var movements = new List<CarrierMovement> { movementMock.Object };

@@ -1,12 +1,9 @@
 ﻿namespace NDDDSample.Web
 {
-    #region Usings
-
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using System.Web.Routing;  
+    using System.Web.Routing;
     using Controllers;
     using Initializers;
 
@@ -14,9 +11,7 @@
 
     using MvcContrib.Castle;
 
-    #endregion
-
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
+    // Note: For instructions on enabling IIS6 or IIS7 classic mode,
     // visit http://go.microsoft.com/?LinkId=9394801
 
     public class MvcApplication : Rhino.Commons.HttpModules.UnitOfWorkApplication
@@ -32,19 +27,19 @@
         }
 
         /// <summary>
-        /// Instantiate the container and add all Controllers that derive from 
-        /// WindsorController to the container.  Also associate the Controller 
+        /// Instantiate the container and add all Controllers that derive from
+        /// WindsorController to the container.  Also associate the Controller
         /// with the WindsorContainer ControllerFactory.
         /// </summary>
         protected virtual void InitializeServiceLocator()
         {
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(Container));
-            Container.RegisterControllers(typeof (HomeController).Assembly);
+            Container.RegisterControllers(typeof(HomeController).Assembly);
 
             RegisterDependencies();
 
             //TODO: Register repositories and services for controllers
-           // ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(Container));
+            // ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(Container));
         }
 
         private void RegisterDependencies()
@@ -62,7 +57,6 @@
             if (isRunInTheCloud)
             {
                 var current = RoleEnvironment.CurrentRoleInstance;
-                
 
                 var roleInstanceEndpoints = RoleEnvironment.Roles["BookingRemoteServiceWorkerRole"]
                     .Instances
@@ -70,7 +64,7 @@
                     .Select(instance => instance.InstanceEndpoints["BookingRemoteServiceWorkerRoleEndpoint"]);
 
                 var bookingInternalEndpoint = roleInstanceEndpoints.ElementAt(new Random().Next(roleInstanceEndpoints.Count())).IPEndpoint.ToString();
-                                
+
                 ComponentRegistrar.AddComponentsTo(this.Container, bookingInternalEndpoint);
             }
             else
@@ -86,7 +80,7 @@
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new {controller = "Home", action = "Index", id = ""} // Parameter defaults
+                new { controller = "Home", action = "Index", id = "" } // Parameter defaults
                 );
         }
     }
