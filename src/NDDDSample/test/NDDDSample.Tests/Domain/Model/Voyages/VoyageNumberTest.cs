@@ -41,11 +41,13 @@ namespace NDDDSample.Tests.Domain.Model.Voyages
         [Test]
         public void TestHashCode()
         {
-            var sut = new VoyageNumber("aaa");
+            const string number = "aaa";
+            var expected = number.GetHashCode();
+            var sut = new VoyageNumber(number);
 
             var actual = sut.GetHashCode();
 
-            Assert.AreEqual(-625742108, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
