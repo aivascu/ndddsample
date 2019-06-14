@@ -2,6 +2,8 @@ configuration: Release
 
 version: 1.0.{build}
 
+image: Visual Studio 2019
+
 # enable AssemblyInfo.cs patching with build version number
 assembly_info:
   patch: true
