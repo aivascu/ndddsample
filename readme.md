@@ -1,4 +1,5 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/ktfflws608b503de?svg=true)](https://ci.appveyor.com/project/AndreiIvascu/ndddsample)
+[![Build status](https://ci.appveyor.com/api/projects/status/ktfflws608b503de?svg=true)](https://ci.appveyor.com/project/aivascu/ndddsample)
+[![Test status](http://teststatusbadge.azurewebsites.net/api/status/aivascu/ndddsample)](https://ci.appveyor.com/project/aivascu/ndddsample)
 
 # NDDD Sample
 
