@@ -1,5 +1,5 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/ktfflws608b503de?svg=true)](https://ci.appveyor.com/project/aivascu/ndddsample)
-[![Test status](http://teststatusbadge.azurewebsites.net/api/status/aivascu/ndddsample)](https://ci.appveyor.com/project/aivascu/ndddsample)
+[![Build status](https://img.shields.io/appveyor/ci/aivascu/ndddsample.svg)](https://ci.appveyor.com/project/aivascu/ndddsample)
+[![Test status](https://img.shields.io/appveyor/tests/aivascu/ndddsample.svg?compact_message)](https://ci.appveyor.com/project/aivascu/ndddsample)
 
 # NDDD Sample
 
@@ -8,6 +8,7 @@
 **NDDDSample** is the port of Domain-Driven Design Sample from Java to C#
 
 **NDDDSample** consists of the following parts:
+
 - Web interface allowing to book and track cargos.
 - RegisterApp allowing to register handling events for cargos.
 
@@ -15,38 +16,36 @@
 
 There are two solutions:
 
-1. Web Cargo Tracking Application - _NDDDSample.sln_
-2. Register desktop Application - _RegisterApp.sln_ which simulates concept where are two different organizations, as it is in the Java version of the DDD sample
-3. _NDDDSample-full.sln_ doesn't have any business\domain meaning it is just full solution with all developed projects
-4. _NDDDSample-full-with-setup.sln_ similar as from p.3 but with a setup project
-5. _NDDDSample-Cloud-full.sln_ is cloud (Windws Azure) version of application
+1. Web Cargo Tracking Application - `NDDDSample.sln`
+1. Register desktop Application - `RegisterApp.sln` which simulates concept where are two different organizations, as it is in the Java version of the DDD sample
+1. `NDDDSample-full.sln` doesn't have any business\domain meaning it is just full solution with all developed projects
+1. `NDDDSample-full-with-setup.sln` similar as from p.3 but with a setup project
+1. `NDDDSample-Cloud-full.sln` is cloud (Windws Azure) version of application
 
 ## Building
 
-**ASP.NET MVC 2.0** must be installed. In order to build the source, run the _build.bat_ file. (You'll find the built assemblies in subfolders of _/build_ directory.)
+**ASP.NET MVC 2.0** must be installed. In order to build the source, run the `build.bat` file. (You'll find the built assemblies in subfolders of `/build` directory.)
 
 **Note:** The cloud version can be built and run only from Visual Studio 2010.
 
-**Windows Azure SDK** needs to be installed. You can find it under _tools\WindowsAzureSDK_
+**Windows Azure SDK** needs to be installed. You can find it under `tools\WindowsAzureSDK`
 
 ## Running
 
 In order to run application first build the source. See the building section.
 
 - NDDDSample
-	1.	To run setup from p.2 Visual Studio should be installed. Please verify also if property "vs" in "NDDDSample.build" file corresponds to the path of installed Visual Studio.
-	2.	Setup NDDDSample by running _setup_NDDDSample.bat_ This will install Cassini Web Server and NDDDSample application.
-	3.	Execute _run_NDDDSample.bat_ to run NDDDSample. the following services are run automatically:
-		- _NDDDSample.Interfaces.BookingRemoteService.Host.exe_
-		- WCF service allowing to book cargos
-		- _NDDDSample.Interfaces.PathfinderRemoteService.Host.exe_
-		- WCF service allowing to find itineraries the default browser is started with home page of NDDDSample web interface
--	NDDDSample in the Cloud
-	1.	Set up _NDDDCloudService_ project as the start-up project
-	2.	Press (Ctrl + F5)/F5 to run/debug the solution
--	RegisterApp
-	1.	Execute _run_RegisterApp.bat_ to run RegisterApp. The following services are run automatically:
-		- _build\NDDDSample.Interfaces.HandlingService.Host\NDDDSample.Interfaces.HandlingService.Host.exe_ the application RegisterApp is started
+    1. To run setup from p.2 Visual Studio should be installed. Please verify also if property `vs` in `NDDDSample.build` file corresponds to the path of installed Visual Studio.
+    1. Setup NDDDSample by running `setup_NDDDSample.bat` This will install Cassini Web Server and NDDDSample application.
+    1. Execute _run_NDDDSample.bat_ to run **NDDDSample**. the following services are run automatically:
+        - `NDDDSample.Interfaces.BookingRemoteService.Host.exe` - WCF service allowing to book cargos 
+        - `NDDDSample.Interfaces.PathfinderRemoteService.Host.exe` - WCF service allowing to find itineraries the default browser is started with home page of NDDDSample web interface
+- NDDDSample in the Cloud
+    1. Set up _NDDDCloudService_ project as the start-up project
+    1. Press (Ctrl + F5)/F5 to run/debug the solution
+- RegisterApp
+    1. Execute _run_RegisterApp.bat_ to run RegisterApp. The following services are run automatically:
+      - `build\NDDDSample.Interfaces.HandlingService.Host\NDDDSample.Interfaces.HandlingService.Host.exe` the application RegisterApp is started
 
 ## More Details
 
